@@ -3,7 +3,9 @@ package Entity;
 import Main.GamePanel;
 import Main.KeyHandler;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.IOException;
 
 public class Player extends Entity {
 
@@ -14,6 +16,8 @@ public class Player extends Entity {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
         setDefaultValues();
+        getPlayerImage();
+        direction = "down";
     }
 
     public void setDefaultValues(){
@@ -22,6 +26,20 @@ public class Player extends Entity {
         speed = 4;
     }
 
+    public void getPlayerImage() {
+        try {
+            up1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_2.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void update() {
         if(keyHandler.isUpPressed()) {
             y -= speed;
