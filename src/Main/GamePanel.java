@@ -30,6 +30,8 @@ public class GamePanel extends JPanel implements Runnable{
     TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
+    public ColisionChecker colisionChecker = new ColisionChecker(this);
+
     public Player player = new Player(this, keyHandler);
 
 
